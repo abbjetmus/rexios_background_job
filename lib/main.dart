@@ -181,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
       Permission.bluetoothScan,
       Permission.bluetoothConnect,
       // These are needed for older Android versions
-      Permission.bluetooth,
+      // Permission.bluetooth,
     ].request();
 
     statuses.forEach((permission, status) {
