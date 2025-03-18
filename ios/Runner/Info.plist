@@ -5,6 +5,8 @@
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.transistorsoft.fetch</string>
+		<string>ai.zmartrest.long-running-unique</string>
+		<string>ai.zmartrest.long-running</string>
 	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
@@ -41,6 +43,7 @@
 		<string>fetch</string>
 		<string>processing</string>
 		<string>bluetooth-central</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
