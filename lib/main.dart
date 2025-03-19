@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:polar/polar.dart';
 import 'package:rexios_background_job/background_job/background_job.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'dart:io';
+import 'package:flutter_background/flutter_background.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const identifier = 'E985E828';
+  static const identifier = 'E49E872C';
 
   final polar = Polar();
   final logs = ['Service started'];
@@ -114,6 +116,28 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () async {
                         // Request permissions before scanning
                         await _requestPermissions();
+
+                        if (Platform.isAndroid) {
+                          final androidConfig = FlutterBackgroundAndroidConfig(
+                            notificationTitle: 'Rexios',
+                            notificationText: 'Background job running',
+                            notificationImportance:
+                                AndroidNotificationImportance.normal,
+                            //notificationIcon: AndroidResource(name: 'background_icon', defType: 'drawable'), // Default is ic_launcher from folder mipmap
+                          );
+                          bool gotPermission =
+                              await FlutterBackground.initialize(
+                                  androidConfig: androidConfig);
+                          if (gotPermission) {
+                            bool success = await FlutterBackground
+                                .enableBackgroundExecution();
+                            if (!success) {
+                              debugPrint('not enabled');
+                            }
+                          } else {
+                            debugPrint('no permissions');
+                          }
+                        }
 
                         log('Starting device scan...');
                         polar.searchForDevice().listen((e) {

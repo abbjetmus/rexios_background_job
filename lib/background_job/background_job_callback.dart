@@ -16,7 +16,7 @@ Future backgroundJobCallback({
   required bool timeRestricted,
   bool isTestJob = false,
 }) async {
-  const identifier = 'E985E828';
+  const identifier = 'E49E872C';
   final sensorHandler = BackgroundJobSensorHandlerPolar(identifier, Polar());
 
   try {

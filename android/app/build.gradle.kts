@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.rexios_background_job"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = "27.0.12077973"
 
     compileOptions {
