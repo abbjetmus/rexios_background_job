@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:flutter/material.dart';
 import 'package:polar/polar.dart';
@@ -16,6 +17,21 @@ Future backgroundJobCallback({
   required bool timeRestricted,
   bool isTestJob = false,
 }) async {
+  // Start measuring time
+  final stopwatch = Stopwatch()..start();
+  debugPrint('⏱️ BACKGROUND JOB STARTED');
+
+  // Create an isolate completer to track when we're done
+  final completer = Completer<void>();
+
+  // Add error handling for uncaught errors - important for RxJava errors
+  Isolate.current.addErrorListener(RawReceivePort((pair) {
+    debugPrint('❌ Uncaught error in background job: $pair');
+    if (!completer.isCompleted) {
+      completer.complete();
+    }
+  }).sendPort);
+
   const identifier = 'E49E872C';
   try {
     final sensorHandler = BackgroundJobSensorHandlerPolar(identifier, Polar());
@@ -93,8 +109,24 @@ Future backgroundJobCallback({
       );
       await sensorHandler.disconnect();
       debugPrint('Disconnect Completed');
+
+      // Complete our isolate tracker
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
     }
   } catch (e) {
     debugPrint('exception in background task last try: $e');
+
+    // Complete our isolate tracker on error
+    if (!completer.isCompleted) {
+      completer.complete();
+    }
   }
+
+  // Stop the stopwatch and print total time
+  stopwatch.stop();
+  final totalTimeSeconds = stopwatch.elapsedMilliseconds / 1000;
+  debugPrint(
+      '⏱️ BACKGROUND JOB COMPLETED in ${totalTimeSeconds.toStringAsFixed(2)} seconds');
 }
