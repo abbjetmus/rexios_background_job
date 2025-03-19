@@ -1,0 +1,122 @@
+D/BluetoothGatt(26586): connect() - device: A0:9E:1A:E4:9E:87, auto: false
+I/BluetoothAdapter(26586): isSecureModeEnabled
+I/flutter (26586): Device connecting
+I/flutter (26586): Device connected
+D/BluetoothLeScanner(26586): Start Scan with callback
+I/flutter (26586): Background job - Sensor@E49E872C connected
+I/flutter (26586): Connect Completed
+I/flutter (26586): SDK Feature Ready Completed
+I/flutter (26586): Battery: 8
+I/flutter (26586): Stoppade PPI data
+D/BluetoothLeScanner(26586): Start Scan with callback
+D/BluetoothLeScanner(26586): onScannerRegistered() - status=0 scannerId=9 mScannerId=0
+I/flutter (26586): recordings: 1
+I/flutter (26586): Processing offline data: /U/0/20250319/R/095205/PPI.REC, size: 1359
+D/BluetoothLeScanner(26586): Stop Scan with callback
+D/BluetoothLeScanner(26586): Start Scan with callback
+D/BluetoothLeScanner(26586): onScannerRegistered() - status=0 scannerId=9 mScannerId=0
+D/BluetoothLeScanner(26586): Stop Scan with callback
+D/BluetoothGatt(26586): onConnectionUpdated() - Device=A0:9E:1A:E4:9E:87 interval=9 latency=0 timeout=600 status=0
+D/BluetoothLeScanner(26586): Start Scan with callback
+D/BluetoothLeScanner(26586): onScannerRegistered() - status=0 scannerId=9 mScannerId=0
+I/flutter (26586): ppiOfflineListLength /U/0/20250319/R/095205/PPI.REC
+I/flutter (26586): PPI: 906, HR: 62, Time: 2025-03-19T09:51:57.854198
+I/flutter (26586): PPI: 974, HR: 62, Time: 2025-03-19T09:51:58.828198
+I/flutter (26586): PPI: 935, HR: 62, Time: 2025-03-19T09:51:59.763198
+I/flutter (26586): PPI: 960, HR: 62, Time: 2025-03-19T09:52:00.723198
+I/flutter (26586): PPI: 895, HR: 62, Time: 2025-03-19T09:52:01.618198
+I/flutter (26586): PPI: 1024, HR: 62, Time: 2025-03-19T09:52:02.642198
+I/flutter (26586): PPI: 986, HR: 62, Time: 2025-03-19T09:52:03.628198
+I/flutter (26586): PPI: 1122, HR: 0, Time: 2025-03-19T09:52:04.750198
+I/flutter (26586): PPI: 985, HR: 0, Time: 2025-03-19T09:52:05.735198
+I/flutter (26586): PPI: 719, HR: 0, Time: 2025-03-19T09:52:06.454198
+I/flutter (26586): PPI: 1208, HR: 63, Time: 2025-03-19T09:52:07.662198
+I/flutter (26586): PPI: 678, HR: 0, Time: 2025-03-19T09:52:08.340198
+I/flutter (26586): PPI: 1008, HR: 0, Time: 2025-03-19T09:52:09.348198
+I/flutter (26586): PPI: 562, HR: 0, Time: 2025-03-19T09:52:09.910198
+I/flutter (26586): PPI: 1063, HR: 0, Time: 2025-03-19T09:52:10.973198
+I/flutter (26586): PPI: 844, HR: 0, Time: 2025-03-19T09:52:11.817198
+I/flutter (26586): PPI: 1007, HR: 0, Time: 2025-03-19T09:52:12.824198
+I/BluetoothAdapter(26586): STATE_ON
+I/BluetoothAdapter(26586): STATE_ON
+D/BluetoothLeScanner(26586): Stop Scan with callback
+I/BluetoothAdapter(26586): STATE_ON
+I/BluetoothAdapter(26586): STATE_ON
+D/BluetoothLeScanner(26586): could not find callback wrapper
+I/BluetoothAdapter(26586): STATE_ON
+I/BluetoothAdapter(26586): STATE_ON
+D/BluetoothLeScanner(26586): could not find callback wrapper
+D/BluetoothGatt(26586): cancelOpen() - device: A0:9E:1A:E4:9E:87
+I/flutter (26586): Disconnect Completed
+D/BluetoothGatt(26586): onClientConnectionState() - status=0 clientIf=8 device=A0:9E:1A:E4:9E:87
+D/BluetoothGatt(26586): setCharacteristicNotification() - uuid: 00002a37-0000-1000-8000-00805f9b34fb enable: false
+D/BluetoothGatt(26586): close()
+I/WM-WorkerWrapper(26586): Worker result SUCCESS for Work [ id=d65f74ce-6a0c-42e5-a41e-f56e21a3eee7, tags={ dev.fluttercommunity.workmanager.BackgroundWorker } ]
+D/BluetoothGatt(26586): unregisterApp() - mClientIf=8
+E/AndroidRuntime(26586): FATAL EXCEPTION: RxNewThreadScheduler-279
+E/AndroidRuntime(26586): Process: com.example.rexios_background_job, PID: 26586
+E/AndroidRuntime(26586): io.reactivex.rxjava3.exceptions.OnErrorNotImplementedException: The exception was not handled due to missing onError handler in the subscribe() method call. Further reading: https://github.com/ReactiveX/RxJava/wiki/Error-Handling | com.polar.sdk.api.errors.PolarDeviceDisconnected
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:718)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.functions.Functions$OnErrorMissingConsumer.accept(Functions.java:715)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.subscribers.LambdaSubscriber.onError(LambdaSubscriber.java:79)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableDoOnEach$DoOnEachSubscriber.onError(FlowableDoOnEach.java:111)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableDoFinally$DoFinallySubscriber.onError(FlowableDoFinally.java:90)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.subscribers.BasicFuseableSubscriber.onError(BasicFuseableSubscriber.java:101)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableOnErrorNext$OnErrorNextSubscriber.onError(FlowableOnErrorNext.java:86)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.subscriptions.EmptySubscription.error(EmptySubscription.java:55)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableError.subscribeActual(FlowableError.java:39)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Flowable.subscribe(Flowable.java:16013)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Flowable.subscribe(Flowable.java:15959)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableOnErrorNext$OnErrorNextSubscriber.onError(FlowableOnErrorNext.java:106)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.subscribers.BasicFuseableSubscriber.onError(BasicFuseableSubscriber.java:101)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.util.AtomicThrowable.tryTerminateConsumer(AtomicThrowable.java:94)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.checkTerminate(FlowableFlatMap.java:540)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drainLoop(FlowableFlatMap.java:365)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drain(FlowableFlatMap.java:357)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.innerError(FlowableFlatMap.java:572)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$InnerSubscriber.onError(FlowableFlatMap.java:636)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.util.AtomicThrowable.tryTerminateConsumer(AtomicThrowable.java:94)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.checkTerminate(FlowableFlatMap.java:540)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drainLoop(FlowableFlatMap.java:365)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drain(FlowableFlatMap.java:357)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.innerError(FlowableFlatMap.java:572)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$InnerSubscriber.onError(FlowableFlatMap.java:636)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.util.AtomicThrowable.tryTerminateConsumer(AtomicThrowable.java:94)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.checkTerminate(FlowableFlatMap.java:540)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drainLoop(FlowableFlatMap.java:365)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.drain(FlowableFlatMap.java:357)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableFlatMap$MergeSubscriber.onError(FlowableFlatMap.java:318)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleToFlowable$SingleToFlowableObserver.onError(SingleToFlowable.java:68)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.onError(SingleSubscribeOn.java:73)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleDoFinally$DoFinallyObserver.onError(SingleDoFinally.java:79)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSubscribe$DoOnSubscribeSingleObserver.onError(SingleDoOnSubscribe.java:86)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleCreate$Emitter.tryOnError(SingleCreate.java:95)
+E/AndroidRuntime(26586): 	at com.polar.androidcommunications.api.ble.model.gatt.client.psftp.BlePsFtpClient.lambda$request$0$com-polar-androidcommunications-api-ble-model-gatt-client-psftp-BlePsFtpClient(BlePsFtpClient.java:260)
+E/AndroidRuntime(26586): 	at com.polar.androidcommunications.api.ble.model.gatt.client.psftp.BlePsFtpClient$$ExternalSyntheticLambda0.subscribe(D8$$SyntheticClass:0)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleCreate.subscribeActual(SingleCreate.java:40)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleDoOnSubscribe.subscribeActual(SingleDoOnSubscribe.java:41)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleDoFinally.subscribeActual(SingleDoFinally.java:44)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Single.subscribe(Single.java:4855)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn$SubscribeOnObserver.run(SingleSubscribeOn.java:89)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.core.Scheduler$DisposeTask.run(Scheduler.java:644)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.run(ScheduledRunnable.java:65)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.schedulers.ScheduledRunnable.call(ScheduledRunnable.java:56)
+E/AndroidRuntime(26586): 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+E/AndroidRuntime(26586): 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:307)
+E/AndroidRuntime(26586): 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+E/AndroidRuntime(26586): 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+E/AndroidRuntime(26586): 	at java.lang.Thread.run(Thread.java:1012)
+E/AndroidRuntime(26586): Caused by: com.polar.sdk.api.errors.PolarDeviceDisconnected
+E/AndroidRuntime(26586): 	at com.polar.sdk.impl.BDBleApiImpl.handleError(BDBleApiImpl.kt:4318)
+E/AndroidRuntime(26586): 	at com.polar.sdk.impl.BDBleApiImpl.access$handleError(BDBleApiImpl.kt:139)
+E/AndroidRuntime(26586): 	at com.polar.sdk.impl.BDBleApiImpl$listFiles$2.apply(BDBleApiImpl.kt:3787)
+E/AndroidRuntime(26586): 	at com.polar.sdk.impl.BDBleApiImpl$listFiles$2.apply(BDBleApiImpl.kt:3786)
+E/AndroidRuntime(26586): 	at io.reactivex.rxjava3.internal.operators.flowable.FlowableOnErrorNext$OnErrorNextSubscriber.onError(FlowableOnErrorNext.java:94)
+E/AndroidRuntime(26586): 	... 40 more
+I/flutter (26586): Device disconnected
+I/Process (26586): Sending signal. PID: 26586 SIG: 9
+Lost connection to device.
+
+Exited.

@@ -34,6 +34,7 @@ dependencies:
   workmanager: ^0.5.1
   background_fetch: ^1.2.1
   permission_handler: ^11.0.0
+  disable_battery_optimization: ^1.1.1
   polar:
     git: https://github.com/abbjetmus/polar.git
   # The following adds the Cupertino Icons font to your application.

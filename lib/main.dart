@@ -1,3 +1,4 @@
+import 'package:disable_battery_optimization/disable_battery_optimization.dart';
 import 'package:flutter/material.dart';
 import 'package:polar/polar.dart';
 import 'package:rexios_background_job/background_job/background_job.dart';
@@ -56,6 +57,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Request permissions when app starts
     _requestPermissions();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      bool? isBatteryOptimizationDisabled =
+          await DisableBatteryOptimization.isBatteryOptimizationDisabled;
+      if (isBatteryOptimizationDisabled == false) {
+        await DisableBatteryOptimization
+            .showDisableBatteryOptimizationSettings();
+      }
+    });
   }
 
   @override
@@ -118,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         await _requestPermissions();
 
                         if (Platform.isAndroid) {
-                          final androidConfig = FlutterBackgroundAndroidConfig(
+                          const androidConfig = FlutterBackgroundAndroidConfig(
                             notificationTitle: 'Rexios',
                             notificationText: 'Background job running',
                             notificationImportance:
@@ -168,6 +178,106 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: () async {
                         log('Running background job...');
                         await startTestBackgroundJob();
+                      },
+                    ),
+                    ElevatedButton.icon(
+                      label: const Text('Start offline recording'),
+                      onPressed: () async {
+                        log('Starting offline recording...');
+                        await polar.setLocalTime(identifier, DateTime.now());
+                        final offlineRecordingStatus =
+                            await polar.getOfflineRecordingStatus(identifier);
+
+                        if (!offlineRecordingStatus
+                            .contains(PolarDataType.ppi)) {
+                          await polar.startOfflineRecording(
+                            identifier,
+                            PolarDataType.ppi,
+                            settings:
+                                PolarSensorSetting(<PolarSettingType, int>{}),
+                          );
+                        }
+                      },
+                    ),
+                    ElevatedButton.icon(
+                      label: const Text('Stop offline recording'),
+                      onPressed: () async {
+                        log('Stopping offline recording...');
+                        await polar.stopOfflineRecording(
+                            identifier, PolarDataType.ppi);
+                      },
+                    ),
+                    ElevatedButton.icon(
+                      label: const Text('Read offline recording'),
+                      onPressed: () async {
+                        final offlineRecordingsType =
+                            await polar.getOfflineRecordingStatus(identifier);
+
+                        if (offlineRecordingsType.isEmpty) {
+                          debugPrint('Ingen offline status att stoppa');
+                        }
+
+                        for (final recordingType in offlineRecordingsType) {
+                          if (recordingType == PolarDataType.ppi) {
+                            await polar.stopOfflineRecording(
+                              identifier,
+                              PolarDataType.ppi,
+                            );
+                            debugPrint('Stoppade PPI data');
+                          }
+                        }
+
+                        var recordings =
+                            await polar.listOfflineRecordings(identifier);
+
+                        debugPrint('recordings: ${recordings.length}');
+
+                        for (final record in recordings) {
+                          debugPrint(
+                            'Processing offline data: ${record.path}, size: ${record.size}',
+                          );
+                          if (record.type == PolarDataType.ppi &&
+                              record.size > 40) {
+                            try {
+                              final ppiData = await polar.getOfflinePpiRecord(
+                                identifier,
+                                record,
+                              );
+
+                              if (ppiData != null) {
+                                debugPrint(
+                                    'ppiOfflineListLength ${record.path}');
+
+                                // Use a for loop instead of forEach
+                                for (int i = 0;
+                                    i < ppiData.data.samples.length;
+                                    i++) {
+                                  final s = ppiData.data.samples[i];
+                                  // Only log every 60th value (approximately one per minute)
+                                  debugPrint(
+                                    'PPI: ${s.ppi}, HR: ${s.hr}, Time: ${s.timeStamp.toIso8601String()}',
+                                  );
+                                }
+                              }
+                              // Delete the record after successful processing
+                              await polar.removeOfflineRecord(
+                                  identifier, record);
+
+                              debugPrint('removed record ${record.path}');
+                            } catch (e) {
+                              debugPrint('Error processing record: $e');
+                            }
+                          }
+                        }
+
+                        await polar.startOfflineRecording(
+                          identifier,
+                          PolarDataType.ppi,
+                          settings:
+                              PolarSensorSetting(<PolarSettingType, int>{}),
+                        );
+
+                        debugPrint('started offline recording');
                       },
                     ),
                   ],
